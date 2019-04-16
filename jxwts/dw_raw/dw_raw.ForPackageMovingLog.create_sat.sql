@@ -11,9 +11,10 @@
  Target Server Version : 50720
  File Encoding         : 65001
 
- Date: 15/04/2019 16:51:18
+ Date: 16/04/2019 09:31:42
 */
 
+SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -22,9 +23,10 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `h_sat_car`;
 CREATE TABLE `h_sat_car`  (
   `h_car_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
+  `load_date` date NOT NULL,
   `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `car_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `id` int(11) NULL DEFAULT NULL,
   `Nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -37,7 +39,8 @@ CREATE TABLE `h_sat_car`  (
   `carTypeId` int(11) NULL DEFAULT NULL,
   `innerLength` double NOT NULL DEFAULT 0,
   `innerWidth` double NOT NULL DEFAULT 0,
-  `innerHeight` double NOT NULL DEFAULT 0
+  `innerHeight` double NOT NULL DEFAULT 0,
+  PRIMARY KEY (`h_car_hk`, `load_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -46,9 +49,10 @@ CREATE TABLE `h_sat_car`  (
 DROP TABLE IF EXISTS `h_sat_deliverynode`;
 CREATE TABLE `h_sat_deliverynode`  (
   `h_delivery_node_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
+  `load_date` date NOT NULL,
   `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `id` int(11) NOT NULL,
   `ediAsnTransportId` int(11) NULL DEFAULT NULL,
   `transactiontype` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -74,7 +78,7 @@ CREATE TABLE `h_sat_deliverynode`  (
   `currentDataId` int(11) NULL DEFAULT NULL,
   `state` int(11) NULL DEFAULT NULL,
   `dataSourceType` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`h_delivery_node_hk`, `load_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -83,9 +87,10 @@ CREATE TABLE `h_sat_deliverynode`  (
 DROP TABLE IF EXISTS `h_sat_dockpoint`;
 CREATE TABLE `h_sat_dockpoint`  (
   `h_dockpoint_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
+  `load_date` date NOT NULL,
   `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `dockpoint_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `id` int(11) NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -95,7 +100,69 @@ CREATE TABLE `h_sat_dockpoint`  (
   `parentId` int(11) NULL DEFAULT NULL,
   `workTime` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `isInUse` bit(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`h_dockpoint_hk`, `load_date`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for h_sat_edi_package
+-- ----------------------------
+DROP TABLE IF EXISTS `h_sat_edi_package`;
+CREATE TABLE `h_sat_edi_package`  (
+  `h_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `load_date` date NOT NULL,
+  `load_end_date` date NULL DEFAULT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `nr` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ediAsnTransportId` int(11) NULL DEFAULT NULL,
+  `ediDeliveryNodeId` int(11) NULL DEFAULT NULL,
+  `internalid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `parentid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `quantityperpack` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `tara` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `itemnopackcustomer` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `itemnopacksupplier` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ownership` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `recycling` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `batchno` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `klt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `printflag` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `packagetype` int(11) NULL DEFAULT NULL,
+  `delnotepositionid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `quantitypack` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `labelnofrom` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `stacking` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `partId` int(11) NULL DEFAULT NULL,
+  `orderno` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `supplierId` int(11) NULL DEFAULT NULL,
+  `milkDate` datetime(0) NULL DEFAULT NULL,
+  `parentPackageId` int(11) NULL DEFAULT NULL,
+  `parentPathIds` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+  `state` int(11) NULL DEFAULT NULL,
+  `currentWhouseId` int(11) NULL DEFAULT NULL,
+  `currentDockPointId` int(11) NULL DEFAULT NULL,
+  `currentUserId` int(11) NULL DEFAULT NULL,
+  `currentCarId` int(11) NULL DEFAULT NULL,
+  `currentCarTrailerId` int(11) NULL DEFAULT NULL,
+  `isChecked` bit(1) NOT NULL DEFAULT b'0',
+  `checkedAt` datetime(0) NULL DEFAULT NULL,
+  `checkUserId` int(11) NULL DEFAULT NULL,
+  `checkCarId` int(11) NULL DEFAULT NULL,
+  `checkCarTrailerId` int(11) NULL DEFAULT NULL,
+  `lastDeliveryPackageRelationId` int(11) NULL DEFAULT NULL,
+  `sentAt` datetime(0) NULL DEFAULT NULL,
+  `receivedAt` datetime(0) NULL DEFAULT NULL,
+  `dataSourceType` int(11) NULL DEFAULT NULL,
+  `ediAsnPositionId` int(11) NULL DEFAULT NULL,
+  `createdAt` datetime(0) NULL DEFAULT NULL,
+  `updatedAt` datetime(0) NULL DEFAULT NULL,
+  `dockPointId` int(11) NULL DEFAULT NULL,
+  `delivDate` datetime(0) NULL DEFAULT NULL,
+  `isSAPReceived` bit(1) NULL DEFAULT NULL,
+  `sapReceivedAt` datetime(0) NULL DEFAULT NULL,
+  `receiverId` int(11) NULL DEFAULT NULL,
+  `totalQty` double NULL DEFAULT NULL,
+  PRIMARY KEY (`h_package_hk`, `load_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -106,7 +173,8 @@ CREATE TABLE `h_sat_edi_transport`  (
   `h_transport_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `load_date` date NULL DEFAULT NULL,
   `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `transport_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `id` int(11) NOT NULL,
   `transportnumber` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -163,76 +231,15 @@ CREATE TABLE `h_sat_edi_transport`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for h_sat_ediasnpackage
--- ----------------------------
-DROP TABLE IF EXISTS `h_sat_ediasnpackage`;
-CREATE TABLE `h_sat_ediasnpackage`  (
-  `h_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `id` int(11) NOT NULL,
-  `nr` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `ediAsnTransportId` int(11) NULL DEFAULT NULL,
-  `ediDeliveryNodeId` int(11) NULL DEFAULT NULL,
-  `internalid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `parentid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `quantityperpack` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `tara` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `itemnopackcustomer` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `itemnopacksupplier` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `ownership` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `recycling` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `batchno` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `klt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `printflag` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `packagetype` int(11) NULL DEFAULT NULL,
-  `delnotepositionid` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `quantitypack` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `labelnofrom` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `stacking` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `partId` int(11) NULL DEFAULT NULL,
-  `orderno` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `supplierId` int(11) NULL DEFAULT NULL,
-  `milkDate` datetime(0) NULL DEFAULT NULL,
-  `parentPackageId` int(11) NULL DEFAULT NULL,
-  `parentPathIds` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
-  `state` int(11) NULL DEFAULT NULL,
-  `currentWhouseId` int(11) NULL DEFAULT NULL,
-  `currentDockPointId` int(11) NULL DEFAULT NULL,
-  `currentUserId` int(11) NULL DEFAULT NULL,
-  `currentCarId` int(11) NULL DEFAULT NULL,
-  `currentCarTrailerId` int(11) NULL DEFAULT NULL,
-  `isChecked` bit(1) NULL DEFAULT NULL,
-  `checkedAt` datetime(0) NULL DEFAULT NULL,
-  `checkUserId` int(11) NULL DEFAULT NULL,
-  `checkCarId` int(11) NULL DEFAULT NULL,
-  `checkCarTrailerId` int(11) NULL DEFAULT NULL,
-  `lastDeliveryPackageRelationId` int(11) NULL DEFAULT NULL,
-  `sentAt` datetime(0) NULL DEFAULT NULL,
-  `receivedAt` datetime(0) NULL DEFAULT NULL,
-  `dataSourceType` int(11) NULL DEFAULT NULL,
-  `ediAsnPositionId` int(11) NULL DEFAULT NULL,
-  `createdAt` datetime(0) NULL DEFAULT NULL,
-  `updatedAt` datetime(0) NULL DEFAULT NULL,
-  `dockPointId` int(11) NULL DEFAULT NULL,
-  `delivDate` datetime(0) NULL DEFAULT NULL,
-  `isSAPReceived` bit(1) NULL DEFAULT NULL,
-  `sapReceivedAt` datetime(0) NULL DEFAULT NULL,
-  `receiverId` int(11) NULL DEFAULT NULL,
-  `totalQty` double NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Table structure for h_sat_part
 -- ----------------------------
 DROP TABLE IF EXISTS `h_sat_part`;
 CREATE TABLE `h_sat_part`  (
   `h_part_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
+  `load_date` date NOT NULL,
   `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `part_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `id` int(11) NOT NULL,
   `Nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -285,7 +292,7 @@ CREATE TABLE `h_sat_part`  (
   `packModel` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `city` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `address` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`h_part_hk`, `load_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -294,9 +301,10 @@ CREATE TABLE `h_sat_part`  (
 DROP TABLE IF EXISTS `h_sat_user`;
 CREATE TABLE `h_sat_user`  (
   `h_user_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
+  `load_date` date NOT NULL,
   `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `user_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `id` int(11) NOT NULL,
   `nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -316,7 +324,7 @@ CREATE TABLE `h_sat_user`  (
   `carTroopId` int(11) NULL DEFAULT NULL,
   `driverLicense` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `driverLevel` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`h_user_hk`, `load_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -325,9 +333,10 @@ CREATE TABLE `h_sat_user`  (
 DROP TABLE IF EXISTS `h_sat_whouse`;
 CREATE TABLE `h_sat_whouse`  (
   `h_warehouse_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
+  `load_date` date NOT NULL,
   `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `warehouse_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `id` int(11) NOT NULL,
   `nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -341,143 +350,19 @@ CREATE TABLE `h_sat_whouse`  (
   `linkPhone` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `workTime` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `isInUse` bit(1) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`h_warehouse_hk`, `load_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for hub_car
+-- Table structure for l_sat_edi_package
 -- ----------------------------
-DROP TABLE IF EXISTS `hub_car`;
-CREATE TABLE `hub_car`  (
-  `h_car_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `car_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`h_car_hk`) USING BTREE,
-  UNIQUE INDEX `AK_uk_hub_car`(`car_nr`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for hub_dockpoint
--- ----------------------------
-DROP TABLE IF EXISTS `hub_dockpoint`;
-CREATE TABLE `hub_dockpoint`  (
-  `h_dockpoint_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `dockpoint_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`h_dockpoint_hk`) USING BTREE,
-  UNIQUE INDEX `AK_uk_hub_dockpoint`(`dockpoint_nr`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for hub_edi_delivery_node
--- ----------------------------
-DROP TABLE IF EXISTS `hub_edi_delivery_node`;
-CREATE TABLE `hub_edi_delivery_node`  (
-  `h_delivery_node_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `delivery_node_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`h_delivery_node_hk`) USING BTREE,
-  UNIQUE INDEX `uk_hub_user`(`delivery_node_nr`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for hub_edi_package
--- ----------------------------
-DROP TABLE IF EXISTS `hub_edi_package`;
-CREATE TABLE `hub_edi_package`  (
-  `h_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `package_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`h_package_hk`) USING BTREE,
-  UNIQUE INDEX `uk_hub_user`(`package_nr`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for hub_edi_transport
--- ----------------------------
-DROP TABLE IF EXISTS `hub_edi_transport`;
-CREATE TABLE `hub_edi_transport`  (
-  `h_transport_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `transport_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`h_transport_hk`) USING BTREE,
-  UNIQUE INDEX `uk_hub_user`(`transport_nr`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for hub_part
--- ----------------------------
-DROP TABLE IF EXISTS `hub_part`;
-CREATE TABLE `hub_part`  (
-  `h_part_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `part_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`h_part_hk`) USING BTREE,
-  UNIQUE INDEX `AK_uk_hub_part`(`part_nr`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for hub_user
--- ----------------------------
-DROP TABLE IF EXISTS `hub_user`;
-CREATE TABLE `hub_user`  (
-  `h_user_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `user_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`h_user_hk`) USING BTREE,
-  UNIQUE INDEX `uk_hub_user`(`user_nr`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for hub_warehouse
--- ----------------------------
-DROP TABLE IF EXISTS `hub_warehouse`;
-CREATE TABLE `hub_warehouse`  (
-  `h_warehouse_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `warehouse_nr` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`h_warehouse_hk`) USING BTREE,
-  UNIQUE INDEX `AK_uk_hub_warehouse`(`warehouse_nr`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for l_sat_edi_package_moving_log
--- ----------------------------
-DROP TABLE IF EXISTS `l_sat_edi_package_moving_log`;
-CREATE TABLE `l_sat_edi_package_moving_log`  (
+DROP TABLE IF EXISTS `l_sat_edi_package`;
+CREATE TABLE `l_sat_edi_package`  (
   `l_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
+  `load_date` date NOT NULL,
   `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `id` int(11) NOT NULL,
-  `packageId` int(11) NULL DEFAULT NULL,
-  `whouseId` int(11) NULL DEFAULT NULL,
-  `carId` int(11) NULL DEFAULT NULL,
-  `driverId` int(11) NULL DEFAULT NULL,
-  `creatorId` int(11) NULL DEFAULT NULL,
-  `createdAt` datetime(0) NULL DEFAULT NULL,
-  `actionType` int(11) NULL DEFAULT NULL,
-  `relationId` int(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for l_sat_ediasnpackage
--- ----------------------------
-DROP TABLE IF EXISTS `l_sat_ediasnpackage`;
-CREATE TABLE `l_sat_ediasnpackage`  (
-  `l_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `load_end_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `id` int(11) NOT NULL,
   `nr` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `ediAsnTransportId` int(11) NULL DEFAULT NULL,
@@ -510,7 +395,7 @@ CREATE TABLE `l_sat_ediasnpackage`  (
   `currentUserId` int(11) NULL DEFAULT NULL,
   `currentCarId` int(11) NULL DEFAULT NULL,
   `currentCarTrailerId` int(11) NULL DEFAULT NULL,
-  `isChecked` bit(1) NULL DEFAULT NULL,
+  `isChecked` bit(1) NOT NULL DEFAULT b'0',
   `checkedAt` datetime(0) NULL DEFAULT NULL,
   `checkUserId` int(11) NULL DEFAULT NULL,
   `checkCarId` int(11) NULL DEFAULT NULL,
@@ -528,38 +413,29 @@ CREATE TABLE `l_sat_ediasnpackage`  (
   `sapReceivedAt` datetime(0) NULL DEFAULT NULL,
   `receiverId` int(11) NULL DEFAULT NULL,
   `totalQty` double NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`l_package_hk`, `load_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Table structure for link_edi_package
+-- Table structure for l_sat_edi_package_moving_log
 -- ----------------------------
-DROP TABLE IF EXISTS `link_edi_package`;
-CREATE TABLE `link_edi_package`  (
+DROP TABLE IF EXISTS `l_sat_edi_package_moving_log`;
+CREATE TABLE `l_sat_edi_package_moving_log`  (
   `l_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `h_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `h_delivery_node_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `h_transport_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`l_package_hk`) USING BTREE,
-  UNIQUE INDEX `uk_hub_user`(`h_package_hk`, `h_delivery_node_hk`, `h_transport_hk`) USING BTREE
+  `load_date` date NOT NULL,
+  `load_end_date` date NULL DEFAULT NULL,
+  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `packageId` int(11) NULL DEFAULT NULL,
+  `whouseId` int(11) NULL DEFAULT NULL,
+  `carId` int(11) NULL DEFAULT NULL,
+  `driverId` int(11) NULL DEFAULT NULL,
+  `creatorId` int(11) NULL DEFAULT NULL,
+  `createdAt` datetime(0) NULL DEFAULT NULL,
+  `actionType` int(11) NULL DEFAULT NULL,
+  `relationId` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`l_package_hk`, `load_date`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Table structure for link_edi_package_moving_log
--- ----------------------------
-DROP TABLE IF EXISTS `link_edi_package_moving_log`;
-CREATE TABLE `link_edi_package_moving_log`  (
-  `l_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `load_date` date NULL DEFAULT NULL,
-  `record_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,`hash_diff` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `h_package_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `h_delivery_node_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `h_transport_hk` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `package_moving_log_id` int(11) NOT NULL,
-  PRIMARY KEY (`l_package_hk`) USING BTREE,
-  UNIQUE INDEX `uk_hub_user`(`h_package_hk`, `h_delivery_node_hk`, `h_transport_hk`, `package_moving_log_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'TODO: moving log 中,除了id阿字段,没有其他字段可以作为联合唯一键.' ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;

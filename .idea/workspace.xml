@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cfcb51f1-6fcc-4117-aaba-2abd4a3570e5" name="Default Changelist" comment="" />
+    <list default="true" id="cfcb51f1-6fcc-4117-aaba-2abd4a3570e5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b8feeeca-de8a-4524-bae4-6ee150979fbd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b8feeeca-de8a-4524-bae4-6ee150979fbd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b8feeeca-de8a-4524-bae4-6ee150979fbd/storage_v2/_src_/schema/ods_jxwts.5744SQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b8feeeca-de8a-4524-bae4-6ee150979fbd/storage_v2/_src_/schema/ods_jxwts.5744SQ.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jxwts/dw_raw/dw_raw.sql" beforeDir="false" afterPath="$PROJECT_DIR$/jxwts/dw_raw/dw_raw.sql" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +29,39 @@
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="jx_wts" type="feb32156:DbDataSourceImpl" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jx_wts" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jx_wts" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dw_raw: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jx_wts" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dw_raw: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="h_sat_edi_package: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jx_wts" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dw_raw: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="h_sat_whouse: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jx_wts" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dw_raw: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="h_sat_whouse: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="columns" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
     </expand>
     <select />
   </component>
@@ -32,32 +70,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/iCloudDrive/iCloud~com~hankinsoft~sqlpro/jxwts/dw_raw/dw_raw.sql">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jxwts/dw_raw/dw_raw.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+            <state relative-caret-position="56">
+              <caret line="333" column="39" selection-start-line="333" selection-start-column="39" selection-end-line="333" selection-end-column="39" />
               <folding>
                 <element signature="e#0#360#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jxwts/src/jxwts.package_moving_log_multi_packagenr.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="2" selection-start-column="1" selection-end-line="1" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/jxwts/ods_to_dm/INSERT into dm_jxwts.package_moving_log.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -81,6 +101,7 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b8feeeca-de8a-4524-bae4-6ee150979fbd/create_sats.sql" />
         <option value="$USER_HOME$/iCloudDrive/iCloud~com~hankinsoft~sqlpro/jxwts/dw_raw/create_dw_raw.sql" />
         <option value="$USER_HOME$/iCloudDrive/iCloud~com~hankinsoft~sqlpro/jxwts/dw_raw/dw_raw.sql" />
+        <option value="$PROJECT_DIR$/jxwts/dw_raw/dw_raw.sql" />
       </list>
     </option>
   </component>
@@ -110,6 +131,12 @@
               <item name="Jx" type="e2918438:DataGripProjectViewPane$1$1" />
               <item name="Jx" type="252d1985:DataGripProjectViewPane$1$1$1" />
               <item name="jxwts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Jx" type="e2918438:DataGripProjectViewPane$1$1" />
+              <item name="Jx" type="252d1985:DataGripProjectViewPane$1$1$1" />
+              <item name="jxwts" type="462c0819:PsiDirectoryNode" />
+              <item name="dw_raw" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -166,23 +193,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Database" order="0" sideWeight="0.49780703" visible="true" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Database" order="0" sideWeight="0.49780703" visible="true" weight="0.24966443" />
       <window_info id="Favorites" order="1" sideWeight="0.502193" side_tool="true" weight="0.24966443" />
+      <window_info id="Structure" order="2" sideWeight="0.5745938" weight="0.26308724" />
       <window_info anchor="bottom" id="Messages" weight="0.3293944" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="4" weight="0.32842416" />
-      <window_info anchor="bottom" id="Database Console" order="5" sideWeight="0.4994664" weight="0.24916202" />
-      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49932885" weight="0.32791728" />
+      <window_info anchor="bottom" id="Database Console" order="5" sideWeight="0.4994664" visible="true" weight="0.24815361" />
+      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4986577" weight="0.32791728" />
       <window_info anchor="bottom" id="Database Changes" order="7" sideWeight="0.49932885" weight="0.3273743" />
       <window_info anchor="bottom" id="SQL Generator" order="8" weight="0.4329897" />
       <window_info anchor="bottom" id="Debug" order="9" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" visible="true" weight="0.32791728" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="0" sideWeight="0.4923077" visible="true" weight="0.26308724" />
-      <window_info anchor="right" id="Structure" order="1" sideWeight="0.50769234" side_tool="true" visible="true" weight="0.26308724" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5013423" side_tool="true" weight="0.32791728" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="0" sideWeight="0.42540622" visible="true" weight="0.26308724" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Database" order="0" sideWeight="0.49780703" visible="true" weight="0.24966443" />
@@ -343,7 +371,33 @@
     <entry file="file://$PROJECT_DIR$/jxwts/ods_to_dm/INSERT into dm_jxwts.package_moving_log.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+          <caret line="6" column="67" lean-forward="true" selection-start-line="6" selection-start-column="67" selection-end-line="6" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jxwts/dw_raw/create_dw_raw.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-35">
+          <caret line="147" column="20" lean-forward="true" selection-start-line="147" selection-start-column="20" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b8feeeca-de8a-4524-bae4-6ee150979fbd/schema/ods_jxwts/table/ediasnpackage">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jxwts/dw_raw/dw_raw.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="333" column="39" selection-start-line="333" selection-start-column="39" selection-end-line="333" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#360#0" />
+          </folding>
         </state>
       </provider>
     </entry>
