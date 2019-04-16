@@ -9,7 +9,17 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:dw_raw,ods_jxwts,stage_area</introspection-schemas>
+      <introspection-schemas>*:dm_jxwts,dw_raw,ods_jxwts,stage_area</introspection-schemas>
+    </data-source>
+    <data-source name="jx_src@42.121.111.38" uuid="760c608a-4df9-4531-9c50-ab7a485978b6">
+      <database-info product="Microsoft SQL Server" version="12.00.2000" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 7.2 for SQL Server" driver-version="7.2.1.0" dbms="MSSQL" exact-version="12.0.2000" exact-driver-version="7.2">
+        <extra-name-characters>$#@</extra-name-characters>
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>sa</user-name>
+      <introspection-schemas>JXWTSDb:dbo</introspection-schemas>
     </data-source>
   </component>
 </project>
