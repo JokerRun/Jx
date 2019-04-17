@@ -8,6 +8,20 @@ from
 limit 1
 ;
 
+ALTER TABLE `dm_jxwts`.package_account_report
+add  UNIQUE INDEX `uk_asn_package_nr`(`asn_package_nr`) USING BTREE COMMENT '`标签号`搜索条件',
+add  INDEX `idx_part_create_at`(`created_at`) USING BTREE COMMENT '`创建日期`搜索条件',
+add  INDEX `idx_part_received_at`(`received_at`) USING BTREE COMMENT '`到货日期`搜索条件',
+add  INDEX `idx_part_sap_received_at`(`sap_received_at`) USING BTREE COMMENT '`SAP到货日期`搜索条件',
+
+
+ADD INDEX `idx_paart_asn_transport_nr`(`asn_transport_nr`) USING BTREE COMMENT '`运输单编号`搜索条件',
+ADD 		INDEX `idx_part_asn_delivery_node_nr`(`asn_delivery_node_nr`) USING BTREE COMMENT '`发运单编号`搜索条件',
+ADD 		INDEX `idx_part_part_nr`(`part_nr`) USING BTREE COMMENT '`零件号`搜索条件',
+ADD		INDEX `idx_part_supplier_desc`(`supplier_desc`) USING BTREE COMMENT '`供应商`搜索条件',
+ADD 		INDEX `idx_part_whouse_nr`(`whouse_nr`) USING BTREE COMMENT '`仓库`搜索条件',
+ADD 		INDEX `idx_part_dockpoint_code`(`dockpoint_code`) USING BTREE COMMENT '`操作类型`搜索条件';
+
 
 
 -- ----------------------------
