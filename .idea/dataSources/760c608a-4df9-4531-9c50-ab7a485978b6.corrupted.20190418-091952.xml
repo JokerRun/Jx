@@ -24,7 +24,10 @@
     </database>
     <database id="8" parent="1" name="Baseline0218">
       <ObjectId>48</ObjectId>
+<<<<<<< HEAD
       <Collation>Chinese_PRC_CI_AS</Collation>
+=======
+>>>>>>> 8c5b5026cb4bb6683891ef3bc8388ba3567b324d
     </database>
     <database id="9" parent="1" name="Baseline1219">
       <ObjectId>34</ObjectId>
@@ -70,6 +73,10 @@
     </database>
     <database id="22" parent="1" name="KBDTest1">
       <ObjectId>45</ObjectId>
+<<<<<<< HEAD
+      <Collation>Chinese_PRC_CI_AS</Collation>
+=======
+>>>>>>> 8c5b5026cb4bb6683891ef3bc8388ba3567b324d
     </database>
     <database id="23" parent="1" name="KBDTest2">
       <ObjectId>46</ObjectId>
@@ -112,7 +119,6 @@
     </database>
     <database id="36" parent="1" name="gaowanxiangSP12">
       <ObjectId>37</ObjectId>
-      <Collation>Chinese_PRC_CI_AS</Collation>
     </database>
     <database id="37" parent="1" name="ipd">
       <ObjectId>26</ObjectId>
@@ -205,7 +211,11 @@
     </schema>
     <schema id="65" parent="20" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2019-04-18.23:36:21.827</IntrospectionTimestamp>
+<<<<<<< HEAD
+      <IntrospectionTimestamp>2019-04-16.18:35:06.570</IntrospectionTimestamp>
+=======
+      <IntrospectionTimestamp>2019-04-18.07:41:14.720</IntrospectionTimestamp>
+>>>>>>> 8c5b5026cb4bb6683891ef3bc8388ba3567b324d
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>

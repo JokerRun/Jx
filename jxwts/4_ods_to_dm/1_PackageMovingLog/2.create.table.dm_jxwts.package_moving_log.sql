@@ -10,15 +10,15 @@ limit 1
 
 ALTER TABLE `dm_jxwts`.`package_moving_log`
 add  UNIQUE INDEX `uk_pkg_mov_log`(`id`) USING BTREE,
-add  INDEX `idx_pkg_mov_log_create_at`(`created_at`) USING BTREE,
-ADD INDEX `idx_package_moving_log_transport_nr`(`transport_nr`) USING BTREE COMMENT '`运输单编号`搜索条件',
-ADD 		INDEX `idx_package_moving_log_delnote_number`(`delnote_number`) USING BTREE COMMENT '`发运单编号`搜索条件',
-ADD 		INDEX `idx_package_moving_log_part_nr`(`part_nr`) USING BTREE COMMENT '`零件号`搜索条件',
-		-- INDEX `idx_package_moving_log_supplier_code`(`supplier_code`) USING BTREE COMMENT '`供应商`搜索条件',
-ADD 		INDEX `idx_package_moving_log_whouse_nr`(`whouse_nr`) USING BTREE COMMENT '`仓库`搜索条件',
-ADD 		INDEX `idx_package_moving_log_action_type`(`action_type`) USING BTREE COMMENT '`操作类型`搜索条件',
-ADD 		INDEX `idx_package_moving_log_car_nr`(`car_nr`) USING BTREE COMMENT '`车挂号`搜索条件',
-ADD 		INDEX `idx_package_moving_log_edi_asn_package_nr`(`edi_asn_package_nr`) USING BTREE COMMENT '`标签号`搜索条件';
+add  INDEX `idx_pkg_mov_log_create_at`(`created_at`) USING BTREE
+# ADD INDEX `idx_package_moving_log_transport_nr`(`transport_nr`) USING BTREE COMMENT '`运输单编号`搜索条件',
+# ADD 		INDEX `idx_package_moving_log_delnote_number`(`delnote_number`) USING BTREE COMMENT '`发运单编号`搜索条件',
+# ADD 		INDEX `idx_package_moving_log_part_nr`(`part_nr`) USING BTREE COMMENT '`零件号`搜索条件',
+# 		-- INDEX `idx_package_moving_log_supplier_code`(`supplier_code`) USING BTREE COMMENT '`供应商`搜索条件',
+# ADD 		INDEX `idx_package_moving_log_whouse_nr`(`whouse_nr`) USING BTREE COMMENT '`仓库`搜索条件',
+# ADD 		INDEX `idx_package_moving_log_action_type`(`action_type`) USING BTREE COMMENT '`操作类型`搜索条件',
+# ADD 		INDEX `idx_package_moving_log_car_nr`(`car_nr`) USING BTREE COMMENT '`车挂号`搜索条件',
+# ADD 		INDEX `idx_package_moving_log_edi_asn_package_nr`(`edi_asn_package_nr`) USING BTREE COMMENT '`标签号`搜索条件';
 -- ADD 		INDEX `idx_package_moving_log_created_at`(`created_at`) USING BTREE COMMENT '`创建日期`搜索条件'
 
 

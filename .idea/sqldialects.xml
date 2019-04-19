@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/jxwts/1_src/PackageAccountReport/PackageAccountReportView.sql" dialect="TSQL" />
-    <file url="file://$PROJECT_DIR$/jxwts/1_src/PackageMovingLog/PackageMovingLog.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/1_src/1_PackageMovingLog/PackageMovingLog.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/1_src/2_PackageAccountReport/PackageAccountReportView.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/1_src/TransportReport.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/4_ods_to_dm/5.TransportReport/TransportReport_stage1.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/4_ods_to_dm/5.TransportReport/test select all.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/4_ods_to_dm/5.TransportReport/test.sql" dialect="TSQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>

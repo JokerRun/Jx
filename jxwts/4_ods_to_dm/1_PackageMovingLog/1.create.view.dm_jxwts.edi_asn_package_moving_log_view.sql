@@ -1,64 +1,64 @@
 DROP VIEW if EXISTS  dm_jxwts.edi_asn_package_moving_log_view;
-CREATE VIEW dm_jxwts.edi_asn_package_moving_log_view as 
-select ods_jxwts.ediasnpackagemovinglog.id	as id,
+CREATE VIEW dm_jxwts.edi_asn_package_moving_log_view as
+select ods_prod.ediasnpackagemovinglog.id	as id,
 	-- 操作仓库：[需计算]如果操作类型是前端扫描，值为**供应商描述(descript)，其它全部使用视图中的whousenr
-	ods_jxwts.whouse.nr as whouse_nr, 
+	ods_prod.whouse.nr as whouse_nr, 
 	-- 操作类型
 	-- 中转入库[description("中转入库")]transferenter = 1,
 	-- 中转发出[description("中转发出")]transfersend = 2,
 	-- 客户收货[description("bbac收货")]clientreceive = 3,
 	-- 手动交付[description("手动交付")]manualdelivery = 4,
 	-- 司机盲扫发出[description("前端扫描")]driversend = 9
-	ods_jxwts.ediasnpackagemovinglog.actiontype as action_type, 
+	ods_prod.ediasnpackagemovinglog.actiontype as action_type, 
 	-- 操作员
 	creator.name as creator_name, 
 	-- 运输车辆
-	ods_jxwts.car.nr as car_nr, 
+	ods_prod.car.nr as car_nr, 
 	-- 司机
-	ods_jxwts.user.name as driver_name, 
+	ods_prod.user.name as driver_name, 
 	-- 司机联系方式
-	ods_jxwts.user.phone as driver_phone, 
+	ods_prod.user.phone as driver_phone, 
 
 	-- 运输单编号
-	ods_jxwts.ediasntransport.transportnumber as transport_nr,
+	ods_prod.ediasntransport.transportnumber as transport_nr,
 	--  发货单编号
-	ods_jxwts.ediasndeliverynode.delnotenumber as delnote_number,
+	ods_prod.ediasndeliverynode.delnotenumber as delnote_number,
 	-- 标签号
-	ods_jxwts.ediasnpackage.nr as edi_asn_package_nr,
+	ods_prod.ediasnpackage.nr as edi_asn_package_nr,
 	-- 零件号
-	ods_jxwts.part.nr as part_nr, 
+	ods_prod.part.nr as part_nr, 
 	-- 件数
-	ods_jxwts.ediasnpackage.quantityperpack as quantity_perpack, 
+	ods_prod.ediasnpackage.quantityperpack as quantity_perpack, 
 	--  供应商id
-	EdiAsnPackage.supplierId as supplier_id, 
+	ods_prod.ediasnpackage.supplierId as supplier_id,
 	--  供应商代码
-	ods_jxwts.part.suppliercode as supplier_code, 
+	ods_prod.part.suppliercode as supplier_code, 
 	--  卸货口
-	ods_jxwts.dockpoint.code as dockpoint_code, 
+	ods_prod.dockpoint.code as dockpoint_code, 
 	-- asn到货时间
-	ods_jxwts.ediasntransport.arrivaldate as arrival_date, 
+	ods_prod.ediasntransport.arrivaldate as arrival_date, 
 	-- 创建时间
-	ods_jxwts.ediasnpackagemovinglog.createdat  as created_at 
+	ods_prod.ediasnpackagemovinglog.createdat  as created_at 
 from
-	ods_jxwts.ediasnpackagemovinglog
+	ods_prod.ediasnpackagemovinglog
 	-- ediasnpackagemovinglog 关联来源
-left outer join ods_jxwts.whouse on ods_jxwts.ediasnpackagemovinglog.whouseid = ods_jxwts.whouse.id
-left outer join ods_jxwts.car on ods_jxwts.ediasnpackagemovinglog.carid = ods_jxwts.car.id
-left outer join ods_jxwts.user on ods_jxwts.ediasnpackagemovinglog.driverid = ods_jxwts.user.id
-left outer join ods_jxwts.user as creator on ods_jxwts.ediasnpackagemovinglog.creatorid = creator.id
+left outer join ods_prod.whouse on ods_prod.ediasnpackagemovinglog.whouseid = ods_prod.whouse.id
+left outer join ods_prod.car on ods_prod.ediasnpackagemovinglog.carid = ods_prod.car.id
+left outer join ods_prod.user on ods_prod.ediasnpackagemovinglog.driverid = ods_prod.user.id
+left outer join ods_prod.user as creator on ods_prod.ediasnpackagemovinglog.creatorid = creator.id
 
 	-- ediasnpackage 关联来源
-left outer join ods_jxwts.ediasnpackage on ods_jxwts.ediasnpackagemovinglog.packageid = ods_jxwts.ediasnpackage.id
+left outer join ods_prod.ediasnpackage on ods_prod.ediasnpackagemovinglog.packageid = ods_prod.ediasnpackage.id
 
-left outer join ods_jxwts.ediasntransport on ods_jxwts.ediasnpackage.ediasntransportid = ods_jxwts.ediasntransport.id
-left outer join ods_jxwts.ediasndeliverynode on ods_jxwts.ediasnpackage.edideliverynodeid = ods_jxwts.ediasndeliverynode.id
-left outer join ods_jxwts.dockpoint on ods_jxwts.ediasnpackage.dockpointid = ods_jxwts.dockpoint.id
-left outer join ods_jxwts.part on ods_jxwts.ediasnpackage.partid = ods_jxwts.part.id
+left outer join ods_prod.ediasntransport on ods_prod.ediasnpackage.ediasntransportid = ods_prod.ediasntransport.id
+left outer join ods_prod.ediasndeliverynode on ods_prod.ediasnpackage.edideliverynodeid = ods_prod.ediasndeliverynode.id
+left outer join ods_prod.dockpoint on ods_prod.ediasnpackage.dockpointid = ods_prod.dockpoint.id
+left outer join ods_prod.part on ods_prod.ediasnpackage.partid = ods_prod.part.id
 
 
 
 /*
-	CREATE OR REPLACE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `ods_jxwts`.`ediasnpackagemovinglogview` AS SELECT
+	CREATE OR REPLACE ALGORITHM = UNDEFINED DEFINER = `root`@`localhost` SQL SECURITY DEFINER VIEW `ods_prod`.`ediasnpackagemovinglogview` AS SELECT
 		EdiAsnPackageMovingLog.id,
 		EdiAsnPackageMovingLog.packageId,
 		EdiAsnPackageMovingLog.whouseId,

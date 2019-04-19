@@ -1,0 +1,1 @@
+truncate ods_prod.${db.table.name:toLower()}
