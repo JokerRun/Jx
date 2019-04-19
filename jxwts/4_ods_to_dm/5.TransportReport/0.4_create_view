@@ -44,5 +44,6 @@ transportnr,
 
 from
 	dm_jxwts.stage_transport_report rep
+# where rep.recordNr ='R201704200954282681'
 group by
 	rep.recordnr,rep.transportnr
