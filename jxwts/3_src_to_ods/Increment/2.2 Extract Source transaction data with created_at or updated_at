@@ -1,4 +1,0 @@
-#${db.table.name:toLower():in("ediasnposition","ediasnpackagemovinglog","ediasnpackage","deliverynodeedipackagerelation")}
-select *
-from "${db.table.name}"
-where createdat between cast('${loaddate-1}' as date) and cast('${loaddate}' as date)

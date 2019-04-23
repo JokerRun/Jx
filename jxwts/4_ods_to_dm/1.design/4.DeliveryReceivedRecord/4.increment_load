@@ -1,0 +1,28 @@
+# 增量写入dm_jxwts.deliveryreceivedrecord
+/*
+【这个表没有使用视图，是在显示时动态查询数据】
+是否有删除数据：是
+是否有更新数据：是，主要更新状态
+是否可以直接增量：是
+增量判断字段：receivedAt，无updatedAt，可以考虑使用触发器生成
+月预计增量：~4000
+天增量: ~1300
+*/
+REPLACE INTO dm_jxwts.delivery_received_record SELECT
+src.*
+FROM
+	dm_jxwts.delivery_received_record_view src
+WHERE
+	src.received_at between date('${loaddate-1}') and date('${loaddate}')
+;
+
+
+# For Explain
+EXPLAIN
+REPLACE INTO dm_jxwts.delivery_received_record SELECT
+src.*
+FROM
+	dm_jxwts.delivery_received_record_view src
+WHERE
+	src.received_at between date('2018-07-01') and date('2018-08-01')
+;

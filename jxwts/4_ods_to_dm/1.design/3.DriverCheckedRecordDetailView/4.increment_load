@@ -1,0 +1,30 @@
+# 增量写入dm_jxwts.drivercheckedrecorddetail
+# 是否有删除数据：无
+# 是否有更新数据：无
+# 是否可以直接增量：是
+# 增量判断字段：createdat
+# 月预计增量：~2000
+# 天增量: ~100
+REPLACE INTO dm_jxwts.driver_checked_record_detail SELECT
+src.*
+FROM
+	dm_jxwts.driver_checked_record_detail_view src
+WHERE
+	src.created_at between date('${loaddate-1}') and date('${loaddate}')
+    and
+    src.id not in (select tgt.id from dm_jxwts.driver_checked_record_detail tgt)
+;
+
+# For Explain
+/*
+EXPLAIN
+REPLACE INTO dm_jxwts.driver_checked_record_detail SELECT
+src.*
+FROM
+	dm_jxwts.driver_checked_record_detail_view src
+WHERE
+	src.created_at between date('2018-07-01') and date('2018-08-01')
+    and
+    src.id not in (select tgt.id from dm_jxwts.driver_checked_record_detail tgt)
+;
+*/

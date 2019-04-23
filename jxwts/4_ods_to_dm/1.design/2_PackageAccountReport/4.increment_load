@@ -1,0 +1,24 @@
+# 增量写入dm_jxwts.package_account_report
+# 是否有删除数据：无
+# 是否有更新数据：是
+# 	更新字段为：state、receivedAt、isSAPReceived、receiverId、isVerify
+# 	更新频率为：频繁，且生命周期中会更新多次
+#
+# 是否可以直接增量：待定
+# 增量判断字段：updatedAt
+# 月预计增量：~40w
+# 天增/更新量: ~1.3w
+REPLACE INTO dm_jxwts.package_account_report
+SELECT src.*
+FROM dm_jxwts.package_account_report_view src
+WHERE src.created_at between date('${loaddate-1}') and date('${loaddate}')
+   or (src.created_at between date('${loaddate-1}') and date('${loaddate}'));
+
+
+# For explain
+
+EXPLAIN REPLACE INTO dm_jxwts.package_account_report
+        SELECT src.*
+        FROM dm_jxwts.package_account_report_view src
+        WHERE (src.created_at between date('2018-07-01') and date('2018-08-01'))
+           or (src.updatedat between date('2018-07-01') and date('2018-08-01'));
