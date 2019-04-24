@@ -4,6 +4,7 @@ select
 
 record_nr,
 transport_nr,
+--    min(id) as id,
 -- edi信息
 	min(package_nr) as package_nr,
 -- 司机扫描时间：checkedat

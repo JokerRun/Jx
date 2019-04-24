@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/jxwts/1_src/1_PackageMovingLog/PackageMovingLog.sql" dialect="TSQL" />
-    <file url="file://$PROJECT_DIR$/jxwts/1_src/2_PackageAccountReport/PackageAccountReportView.sql" dialect="TSQL" />
-    <file url="file://$PROJECT_DIR$/jxwts/1_src/TransportReport.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/1_src/0_src_report_view/create_views.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/1_src/1_design_for_biz_output/1_PackageMovingLog/PackageMovingLog.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/1_src/1_design_for_biz_output/2_PackageAccountReport/PackageAccountReportView.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/1_src/1_design_for_biz_output/TransportReport.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/jxwts/3_src_to_ods/increment/2.2 Extract Source transaction data with created_at or updated_at.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/jxwts/3_src_to_ods/increment/2.3 Extract Source transaction data with created_at only.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/jxwts/4_ods_to_dm/1.design/5.TransportReport/TransportReport_stage1.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/jxwts/996.delete_outdate_src/1_biz.sql" dialect="TSQL" />

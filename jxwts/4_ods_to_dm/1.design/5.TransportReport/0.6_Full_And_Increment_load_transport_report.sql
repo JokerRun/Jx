@@ -3,8 +3,8 @@
 INSERT INTO dm_jxwts.transport_report
 select
 
-record_nr,
-transport_nr,
+    record_nr,
+    transport_nr,
 -- edi信息
 	min(package_nr) as package_nr,
 -- 司机扫描时间：checkedat
@@ -55,8 +55,10 @@ group by
 # 全量写入dm_jxwts.transport_report
 REPLACE INTO dm_jxwts.transport_report
 select
-record_nr,
-transport_nr,
+
+    record_nr,
+    transport_nr,
+
 -- edi信息
 	min(package_nr) as package_nr,
 -- 司机扫描时间：checkedat
@@ -96,7 +98,8 @@ transport_nr,
     sum(valumem)as valumem
 from
 	dm_jxwts.stage_transport_report rep
-# where rep.recordNr ='R201704200954282681'
+# 	TODO：咨询业务，确认是否可以利用received_at做groupby（风险：received_at的范围制定是否回对计算字段产生影响？？）
+#  where rep.received_at between date('') and date('')
 group by
 	rep.record_nr,rep.transport_nr
 ;

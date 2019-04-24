@@ -8,9 +8,12 @@ from
 limit  1
 ;
 
-create index idx_record_transport_package_nr
-	on transport_report (record_nr, transport_nr, package_nr);
+alter table transport_report
+    add primary key (record_nr, transport_nr);
+create unique index   idx_record_transport_package_nr
+ on transport_report(record_nr, transport_nr);
 create index idx_received_at
-	on transport_report (received_at);
+on transport_report (received_at);
+
 
 

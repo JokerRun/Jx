@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="jx_wts" uuid="b8feeeca-de8a-4524-bae4-6ee150979fbd">
-      <database-info product="MySQL" version="5.7.25-0ubuntu0.16.04.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.47 ( Revision: fe1903b1ecb4a96a917f7ed3190d80c049b1de29 )" dbms="MYSQL" exact-version="5.7.25" exact-driver-version="5.1">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
-      <introspection-schemas>*:dm_jxwts,dw_raw,ods_jxwts,stage_area</introspection-schemas>
-    </data-source>
     <data-source name="jx_src@42.121.111.38" uuid="760c608a-4df9-4531-9c50-ab7a485978b6">
       <database-info product="Microsoft SQL Server" version="12.00.2000" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 7.2 for SQL Server" driver-version="7.2.1.0" dbms="MSSQL" exact-version="12.0.2000" exact-driver-version="7.2">
         <extra-name-characters>$#@</extra-name-characters>
@@ -39,7 +29,7 @@
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:@,dm_jxwts,ods_prod</introspection-schemas>
+      <introspection-schemas>*:dm_jxwts,ods_prod</introspection-schemas>
     </data-source>
     <data-source name="for_explain@gateway002" uuid="e13431ec-76ee-4cdf-9231-7b5dd20a5ceb">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />

@@ -56,17 +56,18 @@ select
         else 0.0 end ),4)as valumem
 
 from
-	ods_prod.deliveryreceivededipackagerelation
-	left outer join ods_prod.whouse from_house on ods_prod.deliveryreceivededipackagerelation.fromid = from_house.id
+    ods_prod.deliveryreceivedrecord
+	left outer join ods_prod.deliveryreceivededipackagerelation  on ods_prod.deliveryreceivededipackagerelation.deliveryreceivedrecordid = ods_prod.deliveryreceivedrecord.id
+    left outer join ods_prod.whouse from_house on ods_prod.deliveryreceivededipackagerelation.fromid = from_house.id
 
-	-- 来自edi数据
-	left outer join ods_prod.ediasnpackage on ods_prod.deliveryreceivededipackagerelation.ediasnpackageid = ods_prod.ediasnpackage.id
-	left outer join ods_prod.ediasntransport on ods_prod.ediasnpackage.ediasntransportid = ods_prod.ediasntransport.id
-	left outer join ods_prod.part on ods_prod.ediasnpackage.partid = ods_prod.part.id
-	left outer join ods_prod.supplier on ods_prod.ediasnpackage.supplierid = ods_prod.supplier.id
-	left outer join ods_prod.dockpoint on ods_prod.ediasnpackage.dockpointid = ods_prod.dockpoint.id
-	-- 来自deliveryreceivedrecord数据
-	left outer join ods_prod.deliveryreceivedrecord on ods_prod.deliveryreceivededipackagerelation.deliveryreceivedrecordid = ods_prod.deliveryreceivedrecord.id
+        -- 来自edi数据
+    left outer join ods_prod.ediasnpackage on ods_prod.deliveryreceivededipackagerelation.ediasnpackageid = ods_prod.ediasnpackage.id
+    left outer join ods_prod.ediasntransport on ods_prod.ediasnpackage.ediasntransportid = ods_prod.ediasntransport.id
+    left outer join ods_prod.part on ods_prod.ediasnpackage.partid = ods_prod.part.id
+    left outer join ods_prod.supplier on ods_prod.ediasnpackage.supplierid = ods_prod.supplier.id
+    left outer join ods_prod.dockpoint on ods_prod.ediasnpackage.dockpointid = ods_prod.dockpoint.id
+        -- 来自deliveryreceivedrecord数据
+# 	left outer join ods_prod.deliveryreceivedrecord on ods_prod.deliveryreceivededipackagerelation.deliveryreceivedrecordid = ods_prod.deliveryreceivedrecord.id
 	left outer join ods_prod.user on ods_prod.deliveryreceivedrecord.driverid = ods_prod.user.id
 --	left outer join ods_prod.user as creator on ods_prod.deliveryreceivedrecord.creatorid = creator.id
 --	left outer join ods_prod.whouse as from_house on ods_prod.deliveryreceivedrecord.toid = ods_prod.whouse.id
@@ -76,3 +77,6 @@ from
 	left outer join ods_prod.cartype on ods_prod.car.cartypeid = ods_prod.cartype.id
 	left outer join ods_prod.cartrailer on ods_prod.cartrailer.id = ods_prod.deliveryreceivedrecord.cartrailerid
 	left outer join ods_prod.cartroop on ods_prod.cartroop.id = ods_prod.deliveryreceivedrecord.cartroopid
+#  TODO： 由于主表从rel改为drr，会导致关联到空的id，这些数据需要过滤，故添加如下条件
+    where deliveryreceivededipackagerelation.id is not null
+;
