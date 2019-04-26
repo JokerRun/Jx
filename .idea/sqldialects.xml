@@ -10,6 +10,7 @@
     <file url="file://$PROJECT_DIR$/jxwts/4_ods_to_dm/1.design/5.TransportReport/TransportReport_stage1.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/jxwts/996.delete_outdate_src/1_biz.sql" dialect="TSQL" />
     <file url="file://$PROJECT_DIR$/jxwts/996.delete_outdate_src/2_Run.sql" dialect="TSQL" />
+    <file url="file://$PROJECT_DIR$/sql_status_tips.sql" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
 </project>

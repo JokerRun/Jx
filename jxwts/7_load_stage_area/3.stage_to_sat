@@ -1,0 +1,44 @@
+insert into dw_raw.h_sat_edi_transport(h_transport_hk,load_date,record_source,hash_diff,transport_nr,id,transportnumber,customerpoboxid,supplierpoboxid,plantname,plantcode,customername,customerno,customerdock,suppliername,supplierno,loadingdate,loadingtime,arrivaldate,arrivaltime,carrier,transportationmode,transportationcode,transportationid,transportationid2,freightterms,remark,weightnet,weightgross,created,archived,editransmissionnonew,editransmissionnoold,editransmissiondate,createdDateTime,createdAt,updatedAt,ediProcessMessageId,arrivaldateDatetime,currentDataId,state,currentWhouseId,sentAt,receivedAt,dataSourceType,supplierId,dockPointId,milkDate,supplierTrasnNr,delivDate,isDispatched,trayCount,packageCount,singlePackageCount,isCanceled,isVerify)
+select h_transport_hk,load_date,record_source,hash_diff,transport_nr,id,transportnumber,customerpoboxid,supplierpoboxid,plantname,plantcode,customername,customerno,customerdock,suppliername,supplierno,loadingdate,loadingtime,arrivaldate,arrivaltime,carrier,transportationmode,transportationcode,transportationid,transportationid2,freightterms,remark,weightnet,weightgross,created,archived,editransmissionnonew,editransmissionnoold,editransmissiondate,createdDateTime,createdAt,updatedAt,ediProcessMessageId,arrivaldateDatetime,currentDataId,state,currentWhouseId,sentAt,receivedAt,dataSourceType,supplierId,dockPointId,milkDate,supplierTrasnNr,delivDate,isDispatched,trayCount,packageCount,singlePackageCount,isCanceled,isVerify from stage_area.stage_edi_transport
+;
+
+insert into dw_raw.h_sat_part(id,h_part_hk,load_date,record_source,hash_diff,part_nr,Nr,description,supplierCode,kltContent,kltLength,kltWidth,kltHeight,luContent,luLength,luWidth,luHeight,unitsPerPallet,unitsPerLayer,layers,palletStackingLayers,packageType,packageCategory,packagingMaterialType,isWithWheels,isFolding,lengthAfterFolding,widthAfterFolding,heightAfterFolding,packagingAmount,isWithReturnable,isPackageReturnable,isPalletReturnable,isLidReturnable,mainCode,PalletCode,lidCode,isPI,isWPI,weight,grossWeight,tareWeight,weightUnit,deliveryFlodingLayers,doublePalletCount,perPalletLength,milkRunDatePre,isCarriage,orderNo,parentDockPointId,dockPointId,chineseName,minPickPack,packModel,city,address)
+select id,h_part_hk,load_date,record_source,hash_diff,part_nr,Nr,description,supplierCode,kltContent,kltLength,kltWidth,kltHeight,luContent,luLength,luWidth,luHeight,unitsPerPallet,unitsPerLayer,layers,palletStackingLayers,packageType,packageCategory,packagingMaterialType,isWithWheels,isFolding,lengthAfterFolding,widthAfterFolding,heightAfterFolding,packagingAmount,isWithReturnable,isPackageReturnable,isPalletReturnable,isLidReturnable,mainCode,PalletCode,lidCode,isPI,isWPI,weight,grossWeight,tareWeight,weightUnit,deliveryFlodingLayers,doublePalletCount,perPalletLength,milkRunDatePre,isCarriage,orderNo,parentDockPointId,dockPointId,chineseName,minPickPack,packModel,city,address from stage_part;
+;
+
+insert into dw_raw.h_sat_user (id,h_user_hk,load_date,record_source,hash_diff,user_nr,nr,name,email,pwd,pwdSalt,wxOpenId,wx_access_token,wx_access_token_expires_in,wx_refresh_token,wx_scope,phone,roleType,jgRegId,whouseId,carTroopId,driverLicense,driverLevel)
+select id,
+h_user_hk,
+load_date,
+record_source,
+hash_diff,
+user_nr,
+nr,
+name,
+email,
+pwd,pwdSalt,wxOpenId,wx_access_token,wx_access_token_expires_in,wx_refresh_token,wx_scope,phone,roleType,jgRegId,whouseId,carTroopId,driverLicense,driverLevel from stage_user
+;
+
+insert into dw_raw.h_sat_whouse(id,h_warehouse_hk,load_date,record_source,hash_diff,warehouse_nr,nr,name,address,capacity,type,dockPointId,city,linkMan,linkPhone,workTime,isInUse)
+select id,h_warehouse_hk,load_date,record_source,hash_diff,warehouse_nr,nr,name,address,capacity,type,dockPointId,city,linkMan,linkPhone,workTime,isInUse from stage_warehouse
+;
+insert into dw_raw.h_sat_deliverynode(id,h_delivery_node_hk,load_date,record_source,hash_diff,ediAsnTransportId,transactiontype,weightnet,weightgross,delnotenumber,plantname,plantcode,dock,customername,customerno,suppliername,supplierno,remark,delnotedate,created,archived,customerpoboxid,supplierpoboxid,createdDateTime,createdAt,updatedAt,currentDataId,state,dataSourceType)
+select id,h_delivery_node_hk,load_date,record_source,hash_diff,ediAsnTransportId,transactiontype,weightnet,weightgross,delnotenumber,plantname,plantcode,dock,customername,customerno,suppliername,supplierno,remark,delnotedate,created,archived,customerpoboxid,supplierpoboxid,createdDateTime,createdAt,updatedAt,currentDataId,state,dataSourceType from stage_edi_delivery_node
+;
+
+insert into dw_raw.h_sat_car(id,h_car_hk,load_date,record_source,hash_diff,car_nr,Nr,capacity,description,driverId,status,carAreaCode,carTroopCode,carTypeId,innerLength,innerWidth,innerHeight)
+select id,h_car_hk,load_date,record_source,hash_diff,car_nr,Nr,capacity,description,driverId,status,carAreaCode,carTroopCode,carTypeId,innerLength,innerWidth,innerHeight from stage_car
+;
+
+insert into dw_raw.h_sat_dockpoint(id,h_dockpoint_hk,load_date,record_source,hash_diff,dockpoint_nr,name,code,description,type,parentId,workTime,isInUse)
+select id,h_dockpoint_hk,load_date,record_source,hash_diff,dockpoint_nr,name,code,description,type,parentId,workTime,isInUse from stage_dockpoint
+;
+# NiFi Processor
+# query_stage_edi_package_moving_log
+# load_link_edi_package_moving_log
+# load_l_edi_package_moving_log
+#
+# query_stage_edi_package
+# load_h_sat_edi_package
+# load_l_sat_edi_package
+# load_link_edi_package

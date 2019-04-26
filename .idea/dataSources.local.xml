@@ -29,7 +29,7 @@
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:dm_jxwts,ods_prod</introspection-schemas>
+      <introspection-schemas>*:dm_jxwts,dw_raw,ods_prod,stage_area</introspection-schemas>
     </data-source>
     <data-source name="for_explain@gateway002" uuid="e13431ec-76ee-4cdf-9231-7b5dd20a5ceb">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
