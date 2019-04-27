@@ -69,3 +69,12 @@ FROM information_schema.TABLES
 WHERE table_schema not in ('mysql', 'performance_schema', 'information_schema')
 GROUP BY engine
 ORDER BY sum(data_length+index_length) DESC LIMIT 10;
+
+
+
+show VARIABLES like '%general_log%';
+set global general_log =1;
+show VARIABLES like 'log_output';
+set global log_output='table,file';
+set global log_output='file';
+select * from mysql.general_log

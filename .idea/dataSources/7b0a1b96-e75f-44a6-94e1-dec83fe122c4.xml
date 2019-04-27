@@ -9,6 +9,7 @@
     </root>
     <schema id="2" parent="1" name="cas">
       <Current>1</Current>
+      <Visible>1</Visible>
       <Collation>utf8_bin</Collation>
     </schema>
     <schema id="3" parent="1" name="dm_jxwts">
