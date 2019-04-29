@@ -11,7 +11,7 @@ limit 1
 create index idx_created_at on package_account_report (created_at, asn_created_at);
 
 create index idx_package_transport_dn_nr
-	on package_account_report (asn_package_nr, asn_transport_nr, asn_delivery_node_nr);
+	on package_account_report ( asn_transport_nr, asn_delivery_node_nr,asn_package_nr);
 create unique index package_account_report_id_uindex
 	on package_account_report (id);
 alter table package_account_report

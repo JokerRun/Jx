@@ -5,7 +5,7 @@ show variables like 'general%';
 #general-log = 1
 #log = /log/mysql_query.log路径
 #也可以设置变量那样更改,1开启（0关闭）,即时生效,不用重启,首选当然是这样的了
-set global general_log=1;
+set global general_log=0;
 #这个日志对于操作频繁的库,产生的数据量会很快增长,出于对硬盘的保护,可以设置其他存放路径
 # shell $ touch /tmp/mysql_general_log.log
 # shell $ chown mysql.mysql /tmp/mysql_general_log.log

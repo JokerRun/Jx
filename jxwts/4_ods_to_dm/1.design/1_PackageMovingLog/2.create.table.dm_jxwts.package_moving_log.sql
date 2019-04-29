@@ -10,7 +10,9 @@ limit 1
 
 ALTER TABLE `dm_jxwts`.`package_moving_log`
 add  UNIQUE INDEX `uk_pkg_mov_log`(`id`) USING BTREE,
-add  INDEX `idx_pkg_mov_log_create_at`(`created_at`) USING BTREE
+add  INDEX `idx_pkg_mov_log_create_at`(`created_at`) USING BTREE;
+create index idx_tsp_dln_eap_nr
+	on package_moving_log (transport_nr, delnote_number, edi_asn_package_nr);
 # ADD INDEX `idx_package_moving_log_transport_nr`(`transport_nr`) USING BTREE COMMENT '`运输单编号`搜索条件',
 # ADD 		INDEX `idx_package_moving_log_delnote_number`(`delnote_number`) USING BTREE COMMENT '`发运单编号`搜索条件',
 # ADD 		INDEX `idx_package_moving_log_part_nr`(`part_nr`) USING BTREE COMMENT '`零件号`搜索条件',
